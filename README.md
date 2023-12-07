@@ -1,2 +1,2 @@
 # PNG-to-JPG-Resizer
-Помогает быстро конвертировать PNG в JPG и потом увеличить получившееся до 6000x6000
+Helps you quickly convert PNG to JPG and then enlarge the resulting image to 6000x6000
