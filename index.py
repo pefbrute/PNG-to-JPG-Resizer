@@ -5,7 +5,7 @@ import os
 import subprocess
 import argparse
 
-SCALE_FACTOR = 5
+SCALE_FACTOR = 9
 
 class ImageProcessor:
     DEFAULT_IMAGE_FORMAT = ".png"
@@ -37,10 +37,12 @@ class ImageProcessor:
     @staticmethod
     def convert_to_jpg(image_path):
         """Converts the image at the given path to JPG format."""
-        file_name, _ = os.path.splitext(image_path)
-        output_file = f"{file_name}.jpg"
-        subprocess.run(["convert", image_path, output_file], check=True)
-        return output_file
+        file_name, ext = os.path.splitext(image_path)
+        if ext.lower() in ['.jpeg', '.png', '.bmp']:
+            output_file = f"{file_name}.jpg"
+            subprocess.run(["convert", image_path, output_file], check=True)
+            return output_file
+        return image_path  # No conversion needed
 
 def process_image(file_path, scale_factor=SCALE_FACTOR):
     """Process the image: resize and convert to JPG."""
